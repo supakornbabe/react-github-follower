@@ -7,7 +7,8 @@ export default class App extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            username:'',follower:null,
+            username:'',
+            follower:null,
         }
     }
 
@@ -19,7 +20,6 @@ export default class App extends React.Component{
     }
 
     async fetchFollowerData(username){
-
         axios.get(`https://api.github.com/users/`+username+'/followers').then(
             (data)=>{
                 //console.log(data.data)
@@ -29,12 +29,11 @@ export default class App extends React.Component{
     }
 
     render(){
-        
-    return (
-        <>
-            <UsernameInput handleUsername = {this.handleUsername}/>
-            <FollowerListView data={this.state.follower}/> 
-        </>
-        );
+        return (
+            <>
+                <UsernameInput handleUsername = {this.handleUsername}/>
+                <FollowerListView data={this.state.follower}/> 
+            </>
+            );
     }
 }
